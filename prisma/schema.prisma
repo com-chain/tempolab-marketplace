@@ -1,0 +1,141 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  MEMBER
+  ADMIN
+}
+
+enum MembershipStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum AccountType {
+  INDIVIDUAL
+  COMPANY
+}
+
+enum ProductType {
+  PHYSICAL
+  DIGITAL
+  SERVICE
+}
+
+enum OrderStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  COMPLETED
+  CANCELLED
+}
+
+model Member {
+  id           String            @id @default(cuid())
+  username     String            @unique
+  email        String            @unique
+  passwordHash String
+  phone        String?
+  accountType  AccountType       @default(INDIVIDUAL)
+  companyName  String?
+  role         Role              @default(MEMBER)
+  status       MembershipStatus  @default(PENDING)
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  resetTokens  PasswordResetToken[]
+  products     Product[]
+  purchases    Order[]           @relation("BuyerOrders")
+  sales        Order[]           @relation("SellerOrders")
+  activityLogs ActivityLog[]
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  memberId  String
+  member    Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+}
+
+model Product {
+  id                String      @id @default(cuid())
+  title             String
+  description       String
+  price             Decimal     @db.Decimal(10, 2)
+  currency          String      @default("KKN/CHF")
+  category          String
+  location          String
+  type              ProductType @default(PHYSICAL)
+  image             String?
+  quantity          Int         @default(1)
+  shippingAvailable Boolean     @default(false)
+  shippingDelay     String?
+  ownerId           String
+  owner             Member      @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  orders            Order[]
+}
+
+// Une "commande" ici est une demande/réservation, pas un paiement réel :
+// l'acheteur exprime son intérêt, le vendeur accepte/refuse, puis les deux
+// s'arrangent en dehors du site pour l'échange effectif.
+model Order {
+  id        String      @id @default(cuid())
+  productId String
+  product   Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  buyerId   String
+  buyer     Member      @relation("BuyerOrders", fields: [buyerId], references: [id], onDelete: Cascade)
+  sellerId  String
+  seller    Member      @relation("SellerOrders", fields: [sellerId], references: [id], onDelete: Cascade)
+  quantity  Int         @default(1)
+  status    OrderStatus @default(PENDING)
+  message   String?
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+// Journal d'activité : trace les actions importantes (inscriptions,
+// validations admin, produits, commandes) pour audit et démonstration.
+model ActivityLog {
+  id         String   @id @default(cuid())
+  action     String
+  targetType String?
+  targetId   String?
+  metadata   Json?
+  actorId    String?
+  actor      Member?  @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([action])
+}
+
+// Erreurs serveur capturées automatiquement (via l'API onRequestError de
+// Next.js) ou manuellement dans les routes — sert de "error tracking" léger
+// sans dépendre d'un service externe.
+model ErrorLog {
+  id         String   @id @default(cuid())
+  message    String
+  stack      String?
+  path       String?
+  method     String?
+  routeType  String?
+  metadata   Json?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+}

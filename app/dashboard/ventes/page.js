@@ -22,22 +22,22 @@ export default async function MySalesPage() {
   return (
     <div className="mx-auto w-full max-w-4xl flex-1 px-4 py-10 sm:px-6">
       <Link href="/dashboard" className="text-sm text-gray-500 hover:underline">
-        &larr; Mon espace
+        &larr; Mi cuenta
       </Link>
-      <h1 className="mt-2 text-2xl font-bold text-gray-900">Mes ventes</h1>
+      <h1 className="mt-2 text-2xl font-bold text-gray-900">Mis ventas</h1>
 
       {orders.length === 0 ? (
         <p className="mt-8 text-center text-gray-500">
-          Vous n&apos;avez pas encore reçu de demande d&apos;achat.
+          Todavía no has recibido ninguna solicitud de compra.
         </p>
       ) : (
         <table className="mt-6 w-full text-left">
           <thead>
             <tr className="border-b border-gray-200 text-xs uppercase text-gray-500">
-              <th className="py-2 pr-4 font-medium">Produit</th>
-              <th className="py-2 pr-4 font-medium">Qté</th>
-              <th className="py-2 pr-4 font-medium">Statut</th>
-              <th className="py-2 pr-4 font-medium">Date</th>
+              <th className="py-2 pr-4 font-medium">Producto</th>
+              <th className="py-2 pr-4 font-medium">Cant.</th>
+              <th className="py-2 pr-4 font-medium">Estado</th>
+              <th className="py-2 pr-4 font-medium">Fecha</th>
               <th className="py-2 font-medium"></th>
             </tr>
           </thead>

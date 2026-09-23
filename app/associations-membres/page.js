@@ -45,20 +45,20 @@ export default function AssociationsMembresPage() {
       <div className="border-b border-gray-200 bg-brand-light">
         <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
           <Link href="/" className="text-sm text-gray-600 hover:underline">
-            &larr; Retour à l&apos;accueil
+            &larr; Volver al inicio
           </Link>
           <h1 className="mt-3 text-2xl font-bold text-gray-900 sm:text-3xl">
-            Associations membres
+            Organizaciones locales
           </h1>
           <p className="mt-2 max-w-xl text-gray-600">
-            Kultura réunit {members.length} associations membres à Genève.
+            Tempolab reúne a {members.length} organizaciones en Ginebra.
           </p>
 
           <input
             type="text"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Rechercher une association..."
+            placeholder="Buscar una organización..."
             className="mt-6 w-full max-w-sm rounded-md border border-gray-300 bg-white px-4 py-2 text-sm focus:border-brand focus:outline-none"
           />
         </div>
@@ -67,7 +67,7 @@ export default function AssociationsMembresPage() {
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6">
         {groups.length === 0 && (
           <p className="text-center text-gray-500">
-            Aucune association ne correspond à votre recherche.
+            Ninguna organización coincide con tu búsqueda.
           </p>
         )}
 

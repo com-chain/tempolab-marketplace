@@ -10,7 +10,7 @@ export default function BuyerOrderRow({ order }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   async function cancelOrder() {
-    if (!confirm("Annuler cette demande ?")) return;
+    if (!confirm("¿Cancelar esta solicitud?")) return;
     setIsSubmitting(true);
     try {
       const response = await fetch(`/api/orders/${order.id}`, {
@@ -38,7 +38,7 @@ export default function BuyerOrderRow({ order }) {
           {order.product.title}
         </Link>
         <div className="text-xs text-gray-500">
-          Vendeur : {order.seller.username}
+          Vendedor: {order.seller.username}
         </div>
       </td>
       <td className="py-3 pr-4 text-sm text-gray-600">{order.quantity}</td>
@@ -46,7 +46,7 @@ export default function BuyerOrderRow({ order }) {
         <OrderStatusBadge status={order.status} />
       </td>
       <td className="py-3 pr-4 text-sm text-gray-500">
-        {new Date(order.createdAt).toLocaleDateString("fr-CH")}
+        {new Date(order.createdAt).toLocaleDateString("es-ES")}
       </td>
       <td className="py-3">
         {order.status === "PENDING" && (
@@ -57,7 +57,7 @@ export default function BuyerOrderRow({ order }) {
               onClick={cancelOrder}
               className="rounded-md border border-red-300 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 disabled:opacity-60"
             >
-              Annuler
+              Cancelar
             </button>
           </div>
         )}

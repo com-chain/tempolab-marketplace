@@ -2,32 +2,32 @@ import { NextResponse } from "next/server";
 import { put } from "@vercel/blob";
 import { auth } from "@/auth";
 
-const MAX_SIZE = 5 * 1024 * 1024; // 5 Mo
+const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
 export async function POST(request) {
   const session = await auth();
   if (!session) {
-    return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   const formData = await request.formData();
   const file = formData.get("file");
 
   if (!file || typeof file === "string") {
-    return NextResponse.json({ error: "Aucun fichier reçu." }, { status: 400 });
+    return NextResponse.json({ error: "No se ha recibido ningún archivo." }, { status: 400 });
   }
 
   if (!ALLOWED_TYPES.includes(file.type)) {
     return NextResponse.json(
-      { error: "Seules les images (JPEG, PNG, WEBP, GIF) sont acceptées." },
+      { error: "Solo se aceptan imágenes (JPEG, PNG, WEBP, GIF)." },
       { status: 400 }
     );
   }
 
   if (file.size > MAX_SIZE) {
     return NextResponse.json(
-      { error: "L'image ne doit pas dépasser 5 Mo." },
+      { error: "La imagen no debe superar los 5 MB." },
       { status: 400 }
     );
   }

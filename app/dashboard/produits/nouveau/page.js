@@ -15,10 +15,10 @@ export default async function NewProductPage() {
         href="/dashboard/produits"
         className="text-sm text-gray-500 hover:underline"
       >
-        &larr; Mes produits
+        &larr; Mis productos
       </Link>
       <h1 className="mt-2 text-2xl font-bold text-gray-900">
-        Nouveau produit
+        Nuevo producto
       </h1>
 
       <ProductForm />

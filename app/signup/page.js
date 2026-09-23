@@ -36,7 +36,7 @@ export default function SignupPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Une erreur est survenue.");
+        setError(data.error || "Se ha producido un error.");
         return;
       }
 
@@ -44,7 +44,7 @@ export default function SignupPage() {
       event.currentTarget.reset();
       setTimeout(() => router.push("/login"), 3000);
     } catch {
-      setError("Une erreur est survenue. Réessayez.");
+      setError("Se ha producido un error. Inténtalo de nuevo.");
     } finally {
       setIsSubmitting(false);
     }
@@ -52,10 +52,10 @@ export default function SignupPage() {
 
   return (
     <div className="mx-auto w-full max-w-md flex-1 px-4 py-10 sm:px-6">
-      <h1 className="text-2xl font-bold text-gray-900">S&apos;inscrire</h1>
+      <h1 className="text-2xl font-bold text-gray-900">Registrarse</h1>
       <p className="mt-1 text-sm text-gray-500">
-        Votre inscription sera examinée par un administrateur avant que vous
-        puissiez vous connecter.
+        Tu inscripción será revisada por un administrador antes de que puedas
+        iniciar sesión.
       </p>
 
       {error && (
@@ -80,7 +80,7 @@ export default function SignupPage() {
                 : "border-gray-300 text-gray-600"
             }`}
           >
-            Particulier
+            Particular
           </button>
           <button
             type="button"
@@ -91,7 +91,7 @@ export default function SignupPage() {
                 : "border-gray-300 text-gray-600"
             }`}
           >
-            Association / Entreprise
+            Organización / Empresa
           </button>
         </div>
 
@@ -101,7 +101,7 @@ export default function SignupPage() {
               htmlFor="companyName"
               className="block text-sm font-medium text-gray-700"
             >
-              Nom de l&apos;association/entreprise
+              Nombre de la organización/empresa
             </label>
             <input
               id="companyName"
@@ -118,7 +118,7 @@ export default function SignupPage() {
             htmlFor="username"
             className="block text-sm font-medium text-gray-700"
           >
-            Nom d&apos;utilisateur
+            Nombre de usuario
           </label>
           <input
             id="username"
@@ -128,11 +128,11 @@ export default function SignupPage() {
             minLength={3}
             maxLength={20}
             pattern="[a-zA-Z0-9._]+"
-            title="Lettres, chiffres, points et underscores uniquement (3 à 20 caractères)."
+            title="Solo letras, números, puntos y guiones bajos (3 a 20 caracteres)."
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
           />
           <p className="mt-1 text-xs text-gray-500">
-            3 à 20 caractères : lettres, chiffres, points et underscores.
+            3 a 20 caracteres: letras, números, puntos y guiones bajos.
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export default function SignupPage() {
             htmlFor="email"
             className="block text-sm font-medium text-gray-700"
           >
-            Adresse e-mail
+            Correo electrónico
           </label>
           <input
             id="email"
@@ -157,7 +157,7 @@ export default function SignupPage() {
             htmlFor="phone"
             className="block text-sm font-medium text-gray-700"
           >
-            Téléphone (facultatif)
+            Teléfono (opcional)
           </label>
           <input
             id="phone"
@@ -172,7 +172,7 @@ export default function SignupPage() {
             htmlFor="password"
             className="block text-sm font-medium text-gray-700"
           >
-            Mot de passe
+            Contraseña
           </label>
           <input
             id="password"
@@ -181,12 +181,12 @@ export default function SignupPage() {
             required
             minLength={8}
             pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}"
-            title="Au moins 8 caractères, avec une majuscule, une minuscule et un chiffre."
+            title="Al menos 8 caracteres, con una mayúscula, una minúscula y un número."
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
           />
           <p className="mt-1 text-xs text-gray-500">
-            Au moins 8 caractères, avec une majuscule, une minuscule et un
-            chiffre.
+            Al menos 8 caracteres, con una mayúscula, una minúscula y un
+            número.
           </p>
         </div>
 
@@ -195,14 +195,14 @@ export default function SignupPage() {
           disabled={isSubmitting}
           className="mt-2 rounded-md bg-brand px-5 py-2 text-sm font-medium text-white hover:bg-brand-dark disabled:opacity-60"
         >
-          {isSubmitting ? "Envoi..." : "S'inscrire"}
+          {isSubmitting ? "Enviando..." : "Registrarse"}
         </button>
       </form>
 
       <p className="mt-4 text-center text-sm text-gray-500">
-        Déjà inscrit ?{" "}
+        ¿Ya tienes cuenta?{" "}
         <Link href="/login" className="text-brand hover:underline">
-          Se connecter
+          Iniciar sesión
         </Link>
       </p>
     </div>

@@ -4,9 +4,9 @@ import { prisma } from "@/lib/prisma";
 import AddToCartButton from "@/components/AddToCartButton";
 
 const TYPE_LABELS = {
-  PHYSICAL: "Produit physique",
-  DIGITAL: "Produit numérique",
-  SERVICE: "Service",
+  PHYSICAL: "Producto físico",
+  DIGITAL: "Producto digital",
+  SERVICE: "Servicio",
 };
 
 export default async function ProductDetailPage({ params }) {
@@ -23,7 +23,7 @@ export default async function ProductDetailPage({ params }) {
   return (
     <div className="mx-auto w-full max-w-4xl flex-1 px-4 py-8 sm:px-6">
       <Link href="/" className="text-sm text-gray-500 hover:underline">
-        &larr; Retour à tous les produits
+        &larr; Volver a todos los productos
       </Link>
 
       <div className="mt-4 grid grid-cols-1 gap-8 sm:grid-cols-2">
@@ -36,7 +36,7 @@ export default async function ProductDetailPage({ params }) {
           />
         ) : (
           <div className="flex h-80 w-full items-center justify-center rounded-lg bg-gray-100 text-gray-400">
-            Pas d&apos;image
+            Sin imagen
           </div>
         )}
 
@@ -54,7 +54,7 @@ export default async function ProductDetailPage({ params }) {
           </h1>
           <p className="text-sm text-gray-500">{product.location}</p>
           <p className="text-sm text-gray-500">
-            Vendu par{" "}
+            Ofrecido por{" "}
             <span className="font-medium text-gray-700">
               {product.owner.companyName || product.owner.username}
             </span>
@@ -75,12 +75,12 @@ export default async function ProductDetailPage({ params }) {
             <p>
               {product.quantity > 0
                 ? `${product.quantity} en stock`
-                : "Rupture de stock"}
+                : "Agotado"}
             </p>
             <p>
               {product.shippingAvailable
-                ? `Livraison possible${product.shippingDelay ? ` — ${product.shippingDelay}` : ""}`
-                : "Pas de livraison — retrait uniquement"}
+                ? `Envío disponible${product.shippingDelay ? ` — ${product.shippingDelay}` : ""}`
+                : "Sin envío — solo recogida"}
             </p>
           </div>
         </div>

@@ -4,9 +4,9 @@ import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const STATUS_LABELS = {
-  PENDING: "En attente",
-  APPROVED: "Approuvé",
-  REJECTED: "Rejeté",
+  PENDING: "Pendiente",
+  APPROVED: "Aprobado",
+  REJECTED: "Rechazado",
 };
 
 const STATUS_STYLES = {
@@ -46,7 +46,7 @@ function MemberActions({ member }) {
           onClick={() => updateStatus("APPROVED")}
           className="rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-dark disabled:opacity-60"
         >
-          Approuver
+          Aprobar
         </button>
       )}
       {member.status !== "REJECTED" && (
@@ -56,7 +56,7 @@ function MemberActions({ member }) {
           onClick={() => updateStatus("REJECTED")}
           className="rounded-md border border-red-300 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 disabled:opacity-60"
         >
-          {member.status === "APPROVED" ? "Révoquer" : "Rejeter"}
+          {member.status === "APPROVED" ? "Revocar" : "Rechazar"}
         </button>
       )}
     </div>
@@ -88,7 +88,7 @@ export default function AdminAllMembersTable({ members }) {
           type="text"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Rechercher par nom, e-mail ou association..."
+          placeholder="Buscar por nombre, correo u organización..."
           className="w-full flex-1 rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
         />
         <select
@@ -96,31 +96,31 @@ export default function AdminAllMembersTable({ members }) {
           onChange={(event) => setStatusFilter(event.target.value)}
           className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none sm:w-56"
         >
-          <option value="ALL">Tous les statuts</option>
-          <option value="PENDING">En attente</option>
-          <option value="APPROVED">Approuvé</option>
-          <option value="REJECTED">Rejeté</option>
+          <option value="ALL">Todos los estados</option>
+          <option value="PENDING">Pendiente</option>
+          <option value="APPROVED">Aprobado</option>
+          <option value="REJECTED">Rechazado</option>
         </select>
       </div>
 
       <p className="mt-3 text-xs text-gray-500">
-        {filtered.length} compte{filtered.length !== 1 ? "s" : ""}
+        {filtered.length} cuenta{filtered.length !== 1 ? "s" : ""}
       </p>
 
       {filtered.length === 0 ? (
         <p className="mt-8 text-center text-gray-500">
-          Aucun compte ne correspond à ces critères.
+          Ninguna cuenta coincide con estos criterios.
         </p>
       ) : (
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-gray-200 text-xs uppercase text-gray-500">
-                <th className="py-2 pr-4 font-medium">Compte</th>
-                <th className="py-2 pr-4 font-medium">Type</th>
-                <th className="py-2 pr-4 font-medium">Statut</th>
-                <th className="py-2 pr-4 font-medium">Rôle</th>
-                <th className="py-2 pr-4 font-medium">Date</th>
+                <th className="py-2 pr-4 font-medium">Cuenta</th>
+                <th className="py-2 pr-4 font-medium">Tipo</th>
+                <th className="py-2 pr-4 font-medium">Estado</th>
+                <th className="py-2 pr-4 font-medium">Rol</th>
+                <th className="py-2 pr-4 font-medium">Fecha</th>
                 <th className="py-2 font-medium"></th>
               </tr>
             </thead>
@@ -137,8 +137,8 @@ export default function AdminAllMembersTable({ members }) {
                   </td>
                   <td className="py-3 pr-4 text-sm text-gray-600">
                     {member.accountType === "COMPANY"
-                      ? member.companyName || "Association/Entreprise"
-                      : "Particulier"}
+                      ? member.companyName || "Organización/Empresa"
+                      : "Particular"}
                   </td>
                   <td className="py-3 pr-4">
                     <span
@@ -148,10 +148,10 @@ export default function AdminAllMembersTable({ members }) {
                     </span>
                   </td>
                   <td className="py-3 pr-4 text-sm text-gray-500">
-                    {member.role === "ADMIN" ? "Admin" : "Membre"}
+                    {member.role === "ADMIN" ? "Admin" : "Miembro"}
                   </td>
                   <td className="py-3 pr-4 text-sm text-gray-500">
-                    {new Date(member.createdAt).toLocaleDateString("fr-CH")}
+                    {new Date(member.createdAt).toLocaleDateString("es-ES")}
                   </td>
                   <td className="py-3">
                     {member.role !== "ADMIN" && (

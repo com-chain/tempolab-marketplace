@@ -7,9 +7,9 @@ import { signIn } from "next-auth/react";
 
 const ERROR_MESSAGES = {
   "pending-approval":
-    "Votre compte est en attente de validation par un administrateur.",
-  "account-rejected": "Votre demande d'inscription n'a pas été validée.",
-  CredentialsSignin: "Nom d'utilisateur/e-mail ou mot de passe incorrect.",
+    "Tu cuenta está pendiente de validación por un administrador.",
+  "account-rejected": "Tu solicitud de inscripción no ha sido validada.",
+  CredentialsSignin: "Nombre de usuario/correo o contraseña incorrectos.",
 };
 
 export default function LoginPage() {
@@ -34,7 +34,7 @@ export default function LoginPage() {
 
     if (result?.error) {
       const key = result.code || result.error;
-      setError(ERROR_MESSAGES[key] || "Une erreur est survenue.");
+      setError(ERROR_MESSAGES[key] || "Se ha producido un error.");
       return;
     }
 
@@ -44,7 +44,7 @@ export default function LoginPage() {
 
   return (
     <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-16 sm:px-6">
-      <h1 className="text-2xl font-bold text-gray-900">Se connecter</h1>
+      <h1 className="text-2xl font-bold text-gray-900">Iniciar sesión</h1>
 
       {error && (
         <p className="mt-4 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-700">
@@ -58,7 +58,7 @@ export default function LoginPage() {
             htmlFor="identifier"
             className="block text-sm font-medium text-gray-700"
           >
-            Nom d&apos;utilisateur ou e-mail
+            Nombre de usuario o correo
           </label>
           <input
             id="identifier"
@@ -74,7 +74,7 @@ export default function LoginPage() {
             htmlFor="password"
             className="block text-sm font-medium text-gray-700"
           >
-            Mot de passe
+            Contraseña
           </label>
           <input
             id="password"
@@ -90,16 +90,16 @@ export default function LoginPage() {
           disabled={isSubmitting}
           className="mt-2 rounded-md bg-brand px-5 py-2 text-sm font-medium text-white hover:bg-brand-dark disabled:opacity-60"
         >
-          {isSubmitting ? "Connexion..." : "Se connecter"}
+          {isSubmitting ? "Iniciando sesión..." : "Iniciar sesión"}
         </button>
       </form>
 
       <div className="mt-4 flex justify-between text-sm">
         <Link href="/forgot-password" className="text-brand hover:underline">
-          Mot de passe oublié ?
+          ¿Olvidaste tu contraseña?
         </Link>
         <Link href="/signup" className="text-brand hover:underline">
-          S&apos;inscrire
+          Registrarse
         </Link>
       </div>
 
@@ -107,7 +107,7 @@ export default function LoginPage() {
         href="/"
         className="mt-6 text-center text-sm text-gray-500 hover:underline"
       >
-        &larr; Retour à l&apos;accueil
+        &larr; Volver al inicio
       </Link>
     </div>
   );

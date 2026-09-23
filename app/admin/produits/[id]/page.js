@@ -31,10 +31,10 @@ export default async function AdminEditProductPage({ params }) {
         href="/admin/produits"
         className="text-sm text-gray-500 hover:underline"
       >
-        &larr; Tous les produits
+        &larr; Todos los productos
       </Link>
       <h1 className="mt-2 text-2xl font-bold text-gray-900">
-        Modifier le produit
+        Editar producto
       </h1>
 
       <ProductForm

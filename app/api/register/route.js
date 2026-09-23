@@ -11,7 +11,7 @@ export async function POST(request) {
   if (!result.success) {
     const firstIssue = result.error.issues[0];
     return NextResponse.json(
-      { error: firstIssue?.message || "Données invalides." },
+      { error: firstIssue?.message || "Datos no válidos." },
       { status: 400 }
     );
   }
@@ -28,8 +28,8 @@ export async function POST(request) {
       {
         error:
           field === "username"
-            ? "Ce nom d'utilisateur est déjà pris."
-            : "Cette adresse e-mail est déjà utilisée.",
+            ? "Este nombre de usuario ya está en uso."
+            : "Este correo electrónico ya está en uso.",
       },
       { status: 409 }
     );
@@ -59,7 +59,7 @@ export async function POST(request) {
   return NextResponse.json(
     {
       message:
-        "Inscription reçue. Un administrateur doit valider votre compte avant que vous puissiez vous connecter.",
+        "Inscripción recibida. Un administrador debe validar tu cuenta antes de que puedas iniciar sesión.",
     },
     { status: 201 }
   );

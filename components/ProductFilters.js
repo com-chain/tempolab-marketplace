@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 
 const TYPE_LABELS = {
-  PHYSICAL: "Produit physique",
-  DIGITAL: "Produit numérique",
-  SERVICE: "Service",
+  PHYSICAL: "Producto físico",
+  DIGITAL: "Producto digital",
+  SERVICE: "Servicio",
 };
 
 export default function ProductFilters({ products, filters, onChange }) {
@@ -49,7 +49,7 @@ export default function ProductFilters({ products, filters, onChange }) {
         onClick={() => setIsOpen((open) => !open)}
         className="mt-3 flex items-center gap-1 text-sm font-medium text-brand"
       >
-        Filtres avancés {activeCount > 0 ? `(${activeCount})` : ""}
+        Filtros avanzados {activeCount > 0 ? `(${activeCount})` : ""}
         <span aria-hidden="true">{isOpen ? "▴" : "▾"}</span>
       </button>
 
@@ -57,7 +57,7 @@ export default function ProductFilters({ products, filters, onChange }) {
         <div className="mt-3 grid grid-cols-2 gap-3 rounded-md border border-gray-200 bg-gray-50 p-4 sm:grid-cols-3 lg:grid-cols-6">
           <div>
             <label className="block text-xs font-medium text-gray-600">
-              Prix min (KKN/CHF)
+              Precio mín. (TEMPO)
             </label>
             <input
               type="number"
@@ -70,7 +70,7 @@ export default function ProductFilters({ products, filters, onChange }) {
 
           <div>
             <label className="block text-xs font-medium text-gray-600">
-              Prix max (KKN/CHF)
+              Precio máx. (TEMPO)
             </label>
             <input
               type="number"
@@ -90,7 +90,7 @@ export default function ProductFilters({ products, filters, onChange }) {
               onChange={(event) => update("type", event.target.value)}
               className="mt-1 w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm focus:border-brand focus:outline-none"
             >
-              <option value="">Tous</option>
+              <option value="">Todos</option>
               {Object.entries(TYPE_LABELS).map(([value, label]) => (
                 <option key={value} value={value}>
                   {label}
@@ -101,14 +101,14 @@ export default function ProductFilters({ products, filters, onChange }) {
 
           <div>
             <label className="block text-xs font-medium text-gray-600">
-              Localisation
+              Ubicación
             </label>
             <select
               value={filters.location}
               onChange={(event) => update("location", event.target.value)}
               className="mt-1 w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm focus:border-brand focus:outline-none"
             >
-              <option value="">Toutes</option>
+              <option value="">Todas</option>
               {locations.map((location) => (
                 <option key={location} value={location}>
                   {location}
@@ -119,14 +119,14 @@ export default function ProductFilters({ products, filters, onChange }) {
 
           <div>
             <label className="block text-xs font-medium text-gray-600">
-              Vendeur / Association
+              Vendedor / Organización
             </label>
             <select
               value={filters.sellerId}
               onChange={(event) => update("sellerId", event.target.value)}
               className="mt-1 w-full rounded-md border border-gray-300 px-2 py-1.5 text-sm focus:border-brand focus:outline-none"
             >
-              <option value="">Tous</option>
+              <option value="">Todos</option>
               {sellers.map((seller) => (
                 <option key={seller.id} value={seller.id}>
                   {seller.label}
@@ -145,7 +145,7 @@ export default function ProductFilters({ products, filters, onChange }) {
                 }
                 className="h-4 w-4 rounded border-gray-300"
               />
-              Livraison possible
+              Envío disponible
             </label>
           </div>
 
@@ -166,7 +166,7 @@ export default function ProductFilters({ products, filters, onChange }) {
                 }
                 className="text-xs text-gray-500 hover:underline"
               >
-                Réinitialiser les filtres avancés
+                Restablecer los filtros avanzados
               </button>
             </div>
           )}

@@ -8,14 +8,14 @@ const VALID_STATUSES = ["APPROVED", "REJECTED"];
 export async function PATCH(request, { params }) {
   const session = await auth();
   if (session?.user?.role !== "ADMIN") {
-    return NextResponse.json({ error: "Non autorisé." }, { status: 403 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 403 });
   }
 
   const { id } = await params;
   const { status } = await request.json();
 
   if (!VALID_STATUSES.includes(status)) {
-    return NextResponse.json({ error: "Statut invalide." }, { status: 400 });
+    return NextResponse.json({ error: "Estado no válido." }, { status: 400 });
   }
 
   const member = await prisma.member.update({

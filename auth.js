@@ -18,7 +18,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        identifier: {}, // nom d'utilisateur ou e-mail
+        identifier: {}, // nombre de usuario o correo electrónico
         password: {},
       },
       async authorize(credentials) {
@@ -40,7 +40,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!isValidPassword) return null;
 
         if (member.status !== "APPROVED") {
-          // Le compte existe mais n'est pas encore validé par un administrateur.
+          // La cuenta existe pero aún no ha sido validada por un administrador.
           throw member.status === "PENDING"
             ? new PendingApprovalError()
             : new AccountRejectedError();

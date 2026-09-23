@@ -19,10 +19,10 @@ export default function AdminMemberRow({ member }) {
         setIsSubmitting(false);
         return;
       }
-      // Ne pas remettre isSubmitting à false ici : cette ligne va disparaître
-      // du tableau une fois le refresh terminé (le membre n'est plus PENDING).
-      // Le faire quand même provoque une mise à jour d'état sur un nœud en
-      // cours de démontage, ce qui casse la réconciliation DOM de React.
+      // No volver a poner isSubmitting en false aquí: esta fila desaparecerá
+      // de la tabla una vez terminado el refresh (el miembro ya no está PENDING).
+      // Hacerlo de todos modos provoca una actualización de estado en un nodo
+      // en proceso de desmontaje, lo que rompe la reconciliación DOM de React.
       router.refresh();
     } catch {
       setIsSubmitting(false);
@@ -37,11 +37,11 @@ export default function AdminMemberRow({ member }) {
       </td>
       <td className="py-3 pr-4 text-sm text-gray-600">
         {member.accountType === "COMPANY"
-          ? member.companyName || "Association/Entreprise"
-          : "Particulier"}
+          ? member.companyName || "Organización/Empresa"
+          : "Particular"}
       </td>
       <td className="py-3 pr-4 text-sm text-gray-500">
-        {new Date(member.createdAt).toLocaleDateString("fr-CH")}
+        {new Date(member.createdAt).toLocaleDateString("es-ES")}
       </td>
       <td className="py-3 text-right">
         <div className="flex justify-end gap-2">
@@ -51,7 +51,7 @@ export default function AdminMemberRow({ member }) {
             onClick={() => updateStatus("APPROVED")}
             className="rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-dark disabled:opacity-60"
           >
-            Approuver
+            Aprobar
           </button>
           <button
             type="button"
@@ -59,7 +59,7 @@ export default function AdminMemberRow({ member }) {
             onClick={() => updateStatus("REJECTED")}
             className="rounded-md border border-red-300 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 disabled:opacity-60"
           >
-            Rejeter
+            Rechazar
           </button>
         </div>
       </td>

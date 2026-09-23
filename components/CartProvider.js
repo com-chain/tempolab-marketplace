@@ -10,8 +10,8 @@ export function CartProvider({ children }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    // Le panier vit dans localStorage, indisponible côté serveur : on le
-    // charge après le montage pour éviter tout mismatch d'hydratation.
+    // El carrito vive en localStorage, no disponible en el servidor: se
+    // carga después del montaje para evitar cualquier desajuste de hidratación.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setItems(readCart());
     setIsLoaded(true);
@@ -67,7 +67,7 @@ export function CartProvider({ children }) {
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error("useCart doit être utilisé dans un CartProvider.");
+    throw new Error("useCart debe utilizarse dentro de un CartProvider.");
   }
   return context;
 }

@@ -9,7 +9,7 @@ export default function ProductListRow({ product }) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   async function handleDelete() {
-    if (!confirm(`Supprimer "${product.title}" ? Cette action est définitive.`)) {
+    if (!confirm(`¿Eliminar "${product.title}"? Esta acción es definitiva.`)) {
       return;
     }
     setIsDeleting(true);
@@ -38,7 +38,7 @@ export default function ProductListRow({ product }) {
       </td>
       <td className="py-3 pr-4 text-sm text-gray-600">{product.quantity}</td>
       <td className="py-3 pr-4 text-sm text-gray-500">
-        {product.shippingAvailable ? "Oui" : "Non"}
+        {product.shippingAvailable ? "Sí" : "No"}
       </td>
       <td className="py-3">
         <div className="flex justify-end gap-2">
@@ -46,7 +46,7 @@ export default function ProductListRow({ product }) {
             href={`/dashboard/produits/${product.id}`}
             className="rounded-md border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100"
           >
-            Modifier
+            Editar
           </Link>
           <button
             type="button"
@@ -54,7 +54,7 @@ export default function ProductListRow({ product }) {
             onClick={handleDelete}
             className="rounded-md border border-red-300 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 disabled:opacity-60"
           >
-            Supprimer
+            Eliminar
           </button>
         </div>
       </td>

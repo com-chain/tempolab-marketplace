@@ -1,9 +1,9 @@
 const STATUS_LABELS = {
-  PENDING: "En attente",
-  ACCEPTED: "Accepté",
-  DECLINED: "Refusé",
-  COMPLETED: "Terminé",
-  CANCELLED: "Annulé",
+  PENDING: "Pendiente",
+  ACCEPTED: "Aceptado",
+  DECLINED: "Rechazado",
+  COMPLETED: "Completado",
+  CANCELLED: "Cancelado",
 };
 
 const STATUS_STYLES = {

@@ -10,7 +10,7 @@ export async function POST(request) {
   if (!result.success) {
     const firstIssue = result.error.issues[0];
     return NextResponse.json(
-      { error: firstIssue?.message || "Données invalides." },
+      { error: firstIssue?.message || "Datos no válidos." },
       { status: 400 }
     );
   }
@@ -23,7 +23,7 @@ export async function POST(request) {
 
   if (!resetToken || resetToken.expiresAt < new Date()) {
     return NextResponse.json(
-      { error: "Ce lien de réinitialisation est invalide ou a expiré." },
+      { error: "Este enlace de restablecimiento no es válido o ha caducado." },
       { status: 400 }
     );
   }
@@ -41,6 +41,6 @@ export async function POST(request) {
   ]);
 
   return NextResponse.json({
-    message: "Votre mot de passe a été mis à jour. Vous pouvez vous connecter.",
+    message: "Tu contraseña se ha actualizado. Ya puedes iniciar sesión.",
   });
 }

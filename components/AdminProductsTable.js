@@ -23,7 +23,7 @@ export default function AdminProductsTable({ products }) {
   async function handleDelete(product) {
     if (
       !confirm(
-        `Supprimer "${product.title}" (${product.owner.username}) ? Cette action est définitive.`
+        `¿Eliminar "${product.title}" (${product.owner.username})? Esta acción es definitiva.`
       )
     ) {
       return;
@@ -47,25 +47,25 @@ export default function AdminProductsTable({ products }) {
         type="text"
         value={search}
         onChange={(event) => setSearch(event.target.value)}
-        placeholder="Rechercher par titre, catégorie ou vendeur..."
+        placeholder="Buscar por título, categoría o vendedor..."
         className="mt-6 w-full max-w-md rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
       />
 
       <p className="mt-3 text-xs text-gray-500">
-        {filtered.length} produit{filtered.length !== 1 ? "s" : ""}
+        {filtered.length} producto{filtered.length !== 1 ? "s" : ""}
       </p>
 
       {filtered.length === 0 ? (
-        <p className="mt-8 text-center text-gray-500">Aucun produit trouvé.</p>
+        <p className="mt-8 text-center text-gray-500">No se encontró ningún producto.</p>
       ) : (
         <div className="mt-4 overflow-x-auto">
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-gray-200 text-xs uppercase text-gray-500">
-                <th className="py-2 pr-4 font-medium">Produit</th>
-                <th className="py-2 pr-4 font-medium">Vendeur</th>
-                <th className="py-2 pr-4 font-medium">Prix</th>
-                <th className="py-2 pr-4 font-medium">Qté</th>
+                <th className="py-2 pr-4 font-medium">Producto</th>
+                <th className="py-2 pr-4 font-medium">Vendedor</th>
+                <th className="py-2 pr-4 font-medium">Precio</th>
+                <th className="py-2 pr-4 font-medium">Cant.</th>
                 <th className="py-2 font-medium"></th>
               </tr>
             </thead>
@@ -95,7 +95,7 @@ export default function AdminProductsTable({ products }) {
                         href={`/admin/produits/${product.id}`}
                         className="rounded-md border border-gray-300 px-3 py-1.5 text-xs font-medium text-gray-700 hover:bg-gray-100"
                       >
-                        Modifier
+                        Editar
                       </Link>
                       <button
                         type="button"
@@ -103,7 +103,7 @@ export default function AdminProductsTable({ products }) {
                         onClick={() => handleDelete(product)}
                         className="rounded-md border border-red-300 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 disabled:opacity-60"
                       >
-                        Supprimer
+                        Eliminar
                       </button>
                     </div>
                   </td>

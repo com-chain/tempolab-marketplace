@@ -16,13 +16,13 @@ async function assertAccess(id, session) {
 export async function PATCH(request, { params }) {
   const session = await auth();
   if (!session) {
-    return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   const { id } = await params;
   const existing = await assertAccess(id, session);
   if (!existing) {
-    return NextResponse.json({ error: "Introuvable." }, { status: 404 });
+    return NextResponse.json({ error: "No encontrado." }, { status: 404 });
   }
 
   const body = await request.json();
@@ -30,14 +30,14 @@ export async function PATCH(request, { params }) {
   if (!result.success) {
     const firstIssue = result.error.issues[0];
     return NextResponse.json(
-      { error: firstIssue?.message || "Données invalides." },
+      { error: firstIssue?.message || "Datos no válidos." },
       { status: 400 }
     );
   }
 
   const data = result.data;
 
-  // Un admin peut réassigner un produit à un autre membre.
+  // Un admin puede reasignar un producto a otro miembro.
   let ownerId = existing.ownerId;
   if (session.user.role === "ADMIN" && data.ownerId) {
     const owner = await prisma.member.findUnique({
@@ -45,7 +45,7 @@ export async function PATCH(request, { params }) {
     });
     if (!owner) {
       return NextResponse.json(
-        { error: "Membre introuvable." },
+        { error: "Miembro no encontrado." },
         { status: 400 }
       );
     }
@@ -89,13 +89,13 @@ export async function PATCH(request, { params }) {
 export async function DELETE(request, { params }) {
   const session = await auth();
   if (!session) {
-    return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   const { id } = await params;
   const existing = await assertAccess(id, session);
   if (!existing) {
-    return NextResponse.json({ error: "Introuvable." }, { status: 404 });
+    return NextResponse.json({ error: "No encontrado." }, { status: 404 });
   }
 
   await prisma.product.delete({ where: { id } });

@@ -4,7 +4,7 @@ export default function ProductGrid({ products }) {
   if (products.length === 0) {
     return (
       <p className="mx-auto max-w-6xl px-4 py-12 text-center text-gray-500 sm:px-6">
-        Aucun produit ne correspond à votre recherche.
+        Ningún producto coincide con tu búsqueda.
       </p>
     );
   }

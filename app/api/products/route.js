@@ -7,7 +7,7 @@ import { logActivity, ActivityAction } from "@/lib/activityLog";
 export async function GET() {
   const session = await auth();
   if (!session) {
-    return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   const products = await prisma.product.findMany({
@@ -21,7 +21,7 @@ export async function GET() {
 export async function POST(request) {
   const session = await auth();
   if (!session) {
-    return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   const body = await request.json();
@@ -30,7 +30,7 @@ export async function POST(request) {
   if (!result.success) {
     const firstIssue = result.error.issues[0];
     return NextResponse.json(
-      { error: firstIssue?.message || "Données invalides." },
+      { error: firstIssue?.message || "Datos no válidos." },
       { status: 400 }
     );
   }
@@ -44,7 +44,7 @@ export async function POST(request) {
     });
     if (!owner) {
       return NextResponse.json(
-        { error: "Membre introuvable." },
+        { error: "Miembro no encontrado." },
         { status: 400 }
       );
     }

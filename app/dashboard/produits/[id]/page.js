@@ -23,10 +23,10 @@ export default async function EditProductPage({ params }) {
         href="/dashboard/produits"
         className="text-sm text-gray-500 hover:underline"
       >
-        &larr; Mes produits
+        &larr; Mis productos
       </Link>
       <h1 className="mt-2 text-2xl font-bold text-gray-900">
-        Modifier le produit
+        Editar producto
       </h1>
 
       <ProductForm product={{ ...product, price: Number(product.price) }} />

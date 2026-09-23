@@ -1,23 +1,25 @@
-// Taxonomie des catégories définie par Jean (remplace l'ancienne taxonomie
-// inspirée de keepinuse.ch). Ces catégories décrivent le type de service
-// rendu par l'association plutôt qu'un type de produit physique.
+// Taxonomía de categorías: describe el tipo de servicio ofrecido por la
+// organización más que un tipo de producto físico.
 export const categoryTree = [
-  { name: "Administration", subs: [] },
-  { name: "Mobilier", subs: [] },
-  { name: "Production culinaire", subs: [] },
-  { name: "Comptabilité", subs: [] },
-  { name: "Service de ressources humaines", subs: [] },
-  { name: "Bénévolat", subs: [] },
-  { name: "Événementiel", subs: [] },
-  { name: "Communication", subs: [] },
-  { name: "Relations publiques", subs: [] },
-  { name: "Graphisme & design", subs: [] },
-  { name: "Projets", subs: [] },
-  { name: "Financement", subs: [] },
-  { name: "IT", subs: [] },
-  { name: "Juridique", subs: [] },
-  { name: "Promotion artistique & édition", subs: [] },
-  { name: "Écriture et média", subs: [] },
+  { name: "Administración", subs: [] },
+  { name: "Mobiliario", subs: [] },
+  { name: "Producción culinaria", subs: [] },
+  { name: "Contabilidad", subs: [] },
+  { name: "Recursos humanos", subs: [] },
+  { name: "Voluntariado", subs: [] },
+  { name: "Eventos", subs: [] },
+  { name: "Comunicación", subs: [] },
+  { name: "Relaciones públicas", subs: [] },
+  { name: "Diseño gráfico", subs: [] },
+  { name: "Proyectos", subs: [] },
+  { name: "Financiación", subs: [] },
+  { name: "Informática", subs: [] },
+  { name: "Jurídico", subs: [] },
+  { name: "Promoción artística y edición", subs: [] },
+  { name: "Escritura y medios", subs: [] },
+  { name: "Deportes y ocio", subs: [] },
+  { name: "Salud y bienestar", subs: [] },
+  { name: "Educación y formación", subs: [] },
 ];
 
 export const categories = categoryTree.map((category) => category.name);

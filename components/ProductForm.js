@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { categories } from "@/data/categories";
 
 const TYPE_LABELS = {
-  PHYSICAL: "Produit physique",
-  DIGITAL: "Produit numérique",
-  SERVICE: "Service",
+  PHYSICAL: "Producto físico",
+  DIGITAL: "Producto digital",
+  SERVICE: "Servicio",
 };
 
 export default function ProductForm({
@@ -42,12 +42,12 @@ export default function ProductForm({
       });
       const data = await response.json();
       if (!response.ok) {
-        setError(data.error || "Échec de l'envoi de l'image.");
+        setError(data.error || "Error al enviar la imagen.");
         return;
       }
       setImageUrl(data.url);
     } catch {
-      setError("Échec de l'envoi de l'image. Réessayez.");
+      setError("Error al enviar la imagen. Inténtalo de nuevo.");
     } finally {
       setIsUploading(false);
     }
@@ -86,7 +86,7 @@ export default function ProductForm({
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Une erreur est survenue.");
+        setError(data.error || "Se ha producido un error.");
         setIsSubmitting(false);
         return;
       }
@@ -94,7 +94,7 @@ export default function ProductForm({
       router.push(redirectTo);
       router.refresh();
     } catch {
-      setError("Une erreur est survenue. Réessayez.");
+      setError("Se ha producido un error. Inténtalo de nuevo.");
       setIsSubmitting(false);
     }
   }
@@ -110,7 +110,7 @@ export default function ProductForm({
       {isAdmin && (
         <div>
           <label htmlFor="ownerId" className="block text-sm font-medium text-gray-700">
-            Propriétaire du produit
+            Propietario del producto
           </label>
           <select
             id="ownerId"
@@ -120,7 +120,7 @@ export default function ProductForm({
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
           >
             <option value="" disabled>
-              Choisir un membre...
+              Elegir un miembro...
             </option>
             {members.map((member) => (
               <option key={member.id} value={member.id}>
@@ -134,7 +134,7 @@ export default function ProductForm({
 
       <div>
         <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-          Titre
+          Título
         </label>
         <input
           id="title"
@@ -168,7 +168,7 @@ export default function ProductForm({
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label htmlFor="price" className="block text-sm font-medium text-gray-700">
-            Prix (KKN/CHF)
+            Precio (TEMPO)
           </label>
           <input
             id="price"
@@ -184,7 +184,7 @@ export default function ProductForm({
 
         <div>
           <label htmlFor="quantity" className="block text-sm font-medium text-gray-700">
-            Quantité disponible
+            Cantidad disponible
           </label>
           <input
             id="quantity"
@@ -202,7 +202,7 @@ export default function ProductForm({
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label htmlFor="category" className="block text-sm font-medium text-gray-700">
-            Catégorie
+            Categoría
           </label>
           <select
             id="category"
@@ -212,7 +212,7 @@ export default function ProductForm({
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
           >
             <option value="" disabled>
-              Choisir...
+              Elegir...
             </option>
             {categories.map((category) => (
               <option key={category} value={category}>
@@ -244,14 +244,14 @@ export default function ProductForm({
 
       <div>
         <label htmlFor="location" className="block text-sm font-medium text-gray-700">
-          Localisation
+          Ubicación
         </label>
         <input
           id="location"
           name="location"
           type="text"
           required
-          placeholder="ex. Genève"
+          placeholder="ej. Ginebra"
           defaultValue={product?.location}
           className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
         />
@@ -259,13 +259,13 @@ export default function ProductForm({
 
       <div>
         <label htmlFor="imageFile" className="block text-sm font-medium text-gray-700">
-          Photo du produit
+          Foto del producto
         </label>
         {imageUrl && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={imageUrl}
-            alt="Aperçu"
+            alt="Vista previa"
             className="mt-2 h-32 w-32 rounded-md border border-gray-200 object-cover"
           />
         )}
@@ -277,7 +277,7 @@ export default function ProductForm({
           className="mt-2 block w-full text-sm text-gray-600 file:mr-3 file:rounded-md file:border-0 file:bg-brand-light file:px-3 file:py-2 file:text-sm file:font-medium file:text-brand"
         />
         {isUploading && (
-          <p className="mt-1 text-xs text-gray-500">Envoi de l&apos;image...</p>
+          <p className="mt-1 text-xs text-gray-500">Enviando la imagen...</p>
         )}
       </div>
 
@@ -289,7 +289,7 @@ export default function ProductForm({
             onChange={(event) => setShippingAvailable(event.target.checked)}
             className="h-4 w-4 rounded border-gray-300"
           />
-          Livraison possible
+          Envío disponible
         </label>
 
         {shippingAvailable && (
@@ -298,13 +298,13 @@ export default function ProductForm({
               htmlFor="shippingDelay"
               className="block text-sm font-medium text-gray-700"
             >
-              Délai de livraison
+              Plazo de envío
             </label>
             <input
               id="shippingDelay"
               name="shippingDelay"
               type="text"
-              placeholder="ex. 3-5 jours"
+              placeholder="ej. 3-5 días"
               defaultValue={product?.shippingDelay || ""}
               className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
             />
@@ -318,10 +318,10 @@ export default function ProductForm({
         className="mt-2 rounded-md bg-brand px-5 py-2 text-sm font-medium text-white hover:bg-brand-dark disabled:opacity-60"
       >
         {isSubmitting
-          ? "Enregistrement..."
+          ? "Guardando..."
           : isEdit
-            ? "Enregistrer les modifications"
-            : "Publier le produit"}
+            ? "Guardar cambios"
+            : "Publicar producto"}
       </button>
     </form>
   );

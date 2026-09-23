@@ -56,29 +56,29 @@ export default function CartPage() {
       });
       const data = await response.json();
       if (!response.ok) {
-        setError(data.error || "Une erreur est survenue.");
+        setError(data.error || "Se ha producido un error.");
         setIsSubmitting(false);
         return;
       }
       clearCart();
       router.push("/dashboard/achats");
     } catch {
-      setError("Une erreur est survenue. Réessayez.");
+      setError("Se ha producido un error. Inténtalo de nuevo.");
       setIsSubmitting(false);
     }
   }
 
   return (
     <div className="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6">
-      <h1 className="text-2xl font-bold text-gray-900">Panier</h1>
+      <h1 className="text-2xl font-bold text-gray-900">Carrito</h1>
 
       {isLoading ? (
-        <p className="mt-8 text-center text-gray-500">Chargement...</p>
+        <p className="mt-8 text-center text-gray-500">Cargando...</p>
       ) : cartRows.length === 0 ? (
         <div className="mt-8 text-center text-gray-500">
-          <p>Votre panier est vide.</p>
+          <p>Tu carrito está vacío.</p>
           <Link href="/" className="mt-2 inline-block text-brand hover:underline">
-            Voir les produits
+            Ver productos
           </Link>
         </div>
       ) : (
@@ -107,7 +107,7 @@ export default function CartPage() {
                     {row.product.title}
                   </Link>
                   <p className="text-sm text-gray-500">
-                    Vendu par{" "}
+                    Ofrecido por{" "}
                     {row.product.owner.companyName || row.product.owner.username}
                   </p>
                   <p className="text-sm font-semibold text-brand">
@@ -132,7 +132,7 @@ export default function CartPage() {
                   onClick={() => removeItem(row.productId)}
                   className="text-sm text-red-600 hover:underline"
                 >
-                  Retirer
+                  Quitar
                 </button>
               </div>
             ))}
@@ -141,7 +141,7 @@ export default function CartPage() {
           <div className="mt-6 flex items-center justify-between border-t border-gray-200 pt-4">
             <span className="text-lg font-semibold text-gray-900">Total</span>
             <span className="text-lg font-semibold text-brand">
-              {total.toFixed(2)} KKN/CHF
+              {total.toFixed(2)} TEMPO
             </span>
           </div>
 
@@ -150,7 +150,7 @@ export default function CartPage() {
               htmlFor="message"
               className="block text-sm font-medium text-gray-700"
             >
-              Message pour le(s) vendeur(s) (facultatif)
+              Mensaje para el/los vendedor(es) (opcional)
             </label>
             <textarea
               id="message"
@@ -170,9 +170,9 @@ export default function CartPage() {
           {sessionStatus === "unauthenticated" ? (
             <p className="mt-6 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
               <Link href="/login" className="font-medium underline">
-                Connectez-vous
+                Inicia sesión
               </Link>{" "}
-              pour valider votre demande.
+              para confirmar tu solicitud.
             </p>
           ) : (
             <button
@@ -181,13 +181,13 @@ export default function CartPage() {
               onClick={handleCheckout}
               className="mt-6 w-full rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-dark disabled:opacity-60"
             >
-              {isSubmitting ? "Envoi..." : "Envoyer la demande d'achat"}
+              {isSubmitting ? "Enviando..." : "Enviar solicitud de compra"}
             </button>
           )}
           <p className="mt-2 text-center text-xs text-gray-500">
-            Ceci envoie une demande au(x) vendeur(s) — aucun paiement n&apos;est
-            effectué sur le site. Vous vous arrangez ensuite directement avec
-            le vendeur.
+            Esto envía una solicitud al/los vendedor(es) — no se realiza ningún
+            pago en el sitio. Después te pones de acuerdo directamente con
+            el vendedor.
           </p>
         </>
       )}

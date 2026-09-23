@@ -25,12 +25,12 @@ export default function ForgotPasswordPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Une erreur est survenue.");
+        setError(data.error || "Se ha producido un error.");
         return;
       }
       setMessage(data.message);
     } catch {
-      setError("Une erreur est survenue. Réessayez.");
+      setError("Se ha producido un error. Inténtalo de nuevo.");
     } finally {
       setIsSubmitting(false);
     }
@@ -39,11 +39,11 @@ export default function ForgotPasswordPage() {
   return (
     <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-16 sm:px-6">
       <h1 className="text-2xl font-bold text-gray-900">
-        Mot de passe oublié
+        ¿Olvidaste tu contraseña?
       </h1>
       <p className="mt-1 text-sm text-gray-500">
-        Entrez votre adresse e-mail, nous vous enverrons un lien pour
-        réinitialiser votre mot de passe.
+        Introduce tu correo electrónico y te enviaremos un enlace para
+        restablecer tu contraseña.
       </p>
 
       {error && (
@@ -63,7 +63,7 @@ export default function ForgotPasswordPage() {
             htmlFor="email"
             className="block text-sm font-medium text-gray-700"
           >
-            Adresse e-mail
+            Correo electrónico
           </label>
           <input
             id="email"
@@ -79,7 +79,7 @@ export default function ForgotPasswordPage() {
           disabled={isSubmitting}
           className="rounded-md bg-brand px-5 py-2 text-sm font-medium text-white hover:bg-brand-dark disabled:opacity-60"
         >
-          {isSubmitting ? "Envoi..." : "Envoyer le lien"}
+          {isSubmitting ? "Enviando..." : "Enviar enlace"}
         </button>
       </form>
 
@@ -87,7 +87,7 @@ export default function ForgotPasswordPage() {
         href="/login"
         className="mt-6 text-center text-sm text-gray-500 hover:underline"
       >
-        &larr; Retour à la connexion
+        &larr; Volver a iniciar sesión
       </Link>
     </div>
   );

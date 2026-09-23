@@ -23,22 +23,22 @@ export default async function AdminProductsPage() {
   return (
     <div className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6">
       <Link href="/dashboard" className="text-sm text-gray-500 hover:underline">
-        &larr; Mon espace
+        &larr; Mi cuenta
       </Link>
 
       <div className="mt-2 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-900">
-          Tous les produits
+          Todos los productos
         </h1>
         <Link
           href="/admin/produits/nouveau"
           className="rounded-md bg-brand px-4 py-2 text-sm font-medium text-white hover:bg-brand-dark"
         >
-          + Ajouter pour un membre
+          + Añadir para un miembro
         </Link>
       </div>
       <p className="mt-1 text-sm text-gray-500">
-        Tous les produits publiés par tous les membres.
+        Todos los productos publicados por todos los miembros.
       </p>
 
       <AdminProductsTable products={products} />

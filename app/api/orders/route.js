@@ -6,7 +6,7 @@ import { logActivity, ActivityAction } from "@/lib/activityLog";
 export async function POST(request) {
   const session = await auth();
   if (!session) {
-    return NextResponse.json({ error: "Non autorisé." }, { status: 401 });
+    return NextResponse.json({ error: "No autorizado." }, { status: 401 });
   }
 
   const body = await request.json();
@@ -15,7 +15,7 @@ export async function POST(request) {
 
   if (items.length === 0) {
     return NextResponse.json(
-      { error: "Le panier est vide." },
+      { error: "El carrito está vacío." },
       { status: 400 }
     );
   }
@@ -33,19 +33,19 @@ export async function POST(request) {
 
     if (!product) {
       return NextResponse.json(
-        { error: "Un des produits du panier n'existe plus." },
+        { error: "Uno de los productos del carrito ya no existe." },
         { status: 400 }
       );
     }
     if (product.ownerId === session.user.id) {
       return NextResponse.json(
-        { error: `Vous ne pouvez pas commander votre propre produit "${product.title}".` },
+        { error: `No puedes pedir tu propio producto "${product.title}".` },
         { status: 400 }
       );
     }
     if (quantity < 1) {
       return NextResponse.json(
-        { error: "Quantité invalide." },
+        { error: "Cantidad no válida." },
         { status: 400 }
       );
     }

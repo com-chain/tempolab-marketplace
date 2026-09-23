@@ -25,10 +25,10 @@ export default async function AdminNewProductPage() {
         href="/admin/produits"
         className="text-sm text-gray-500 hover:underline"
       >
-        &larr; Tous les produits
+        &larr; Todos los productos
       </Link>
       <h1 className="mt-2 text-2xl font-bold text-gray-900">
-        Ajouter un produit pour un membre
+        Añadir un producto para un miembro
       </h1>
 
       <ProductForm members={members} redirectTo="/admin/produits" />

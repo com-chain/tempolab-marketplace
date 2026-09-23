@@ -30,13 +30,13 @@ function ResetPasswordForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || "Une erreur est survenue.");
+        setError(data.error || "Se ha producido un error.");
         return;
       }
       setMessage(data.message);
       setTimeout(() => router.push("/login"), 2000);
     } catch {
-      setError("Une erreur est survenue. Réessayez.");
+      setError("Se ha producido un error. Inténtalo de nuevo.");
     } finally {
       setIsSubmitting(false);
     }
@@ -45,9 +45,9 @@ function ResetPasswordForm() {
   if (!token) {
     return (
       <p className="text-sm text-red-700">
-        Lien de réinitialisation manquant ou invalide.{" "}
+        Enlace de restablecimiento ausente o no válido.{" "}
         <Link href="/forgot-password" className="text-brand hover:underline">
-          Demander un nouveau lien
+          Solicitar un nuevo enlace
         </Link>
       </p>
     );
@@ -72,7 +72,7 @@ function ResetPasswordForm() {
             htmlFor="password"
             className="block text-sm font-medium text-gray-700"
           >
-            Nouveau mot de passe
+            Nueva contraseña
           </label>
           <input
             id="password"
@@ -81,12 +81,12 @@ function ResetPasswordForm() {
             required
             minLength={8}
             pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}"
-            title="Au moins 8 caractères, avec une majuscule, une minuscule et un chiffre."
+            title="Al menos 8 caracteres, con una mayúscula, una minúscula y un número."
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
           />
           <p className="mt-1 text-xs text-gray-500">
-            Au moins 8 caractères, avec une majuscule, une minuscule et un
-            chiffre.
+            Al menos 8 caracteres, con una mayúscula, una minúscula y un
+            número.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ function ResetPasswordForm() {
           disabled={isSubmitting}
           className="rounded-md bg-brand px-5 py-2 text-sm font-medium text-white hover:bg-brand-dark disabled:opacity-60"
         >
-          {isSubmitting ? "Enregistrement..." : "Réinitialiser le mot de passe"}
+          {isSubmitting ? "Guardando..." : "Restablecer contraseña"}
         </button>
       </form>
     </>
@@ -106,7 +106,7 @@ export default function ResetPasswordPage() {
   return (
     <div className="mx-auto flex w-full max-w-sm flex-1 flex-col justify-center px-4 py-16 sm:px-6">
       <h1 className="text-2xl font-bold text-gray-900">
-        Réinitialiser le mot de passe
+        Restablecer contraseña
       </h1>
       <Suspense fallback={null}>
         <ResetPasswordForm />

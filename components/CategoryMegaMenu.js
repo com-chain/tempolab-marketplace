@@ -35,10 +35,12 @@ export default function CategoryMegaMenu() {
       <button
         type="button"
         onClick={() => setIsOpen((open) => !open)}
-        className="flex shrink-0 items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:bg-brand-dark"
+        className="flex shrink-0 items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900"
       >
-        Catégories
-        <span aria-hidden="true">▾</span>
+        Categorías
+        <span aria-hidden="true" className="text-xs transition-transform">
+          ▾
+        </span>
       </button>
 
       {isOpen && (

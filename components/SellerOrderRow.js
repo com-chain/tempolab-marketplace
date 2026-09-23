@@ -37,7 +37,7 @@ export default function SellerOrderRow({ order }) {
           {order.product.title}
         </Link>
         <div className="text-xs text-gray-500">
-          Acheteur : {order.buyer.username}
+          Comprador: {order.buyer.username}
         </div>
         {order.message && (
           <div className="mt-1 text-xs italic text-gray-500">
@@ -50,7 +50,7 @@ export default function SellerOrderRow({ order }) {
         <OrderStatusBadge status={order.status} />
       </td>
       <td className="py-3 pr-4 text-sm text-gray-500">
-        {new Date(order.createdAt).toLocaleDateString("fr-CH")}
+        {new Date(order.createdAt).toLocaleDateString("es-ES")}
       </td>
       <td className="py-3">
         {order.status === "PENDING" && (
@@ -61,7 +61,7 @@ export default function SellerOrderRow({ order }) {
               onClick={() => updateStatus("ACCEPTED")}
               className="rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-dark disabled:opacity-60"
             >
-              Accepter
+              Aceptar
             </button>
             <button
               type="button"
@@ -69,7 +69,7 @@ export default function SellerOrderRow({ order }) {
               onClick={() => updateStatus("DECLINED")}
               className="rounded-md border border-red-300 px-3 py-1.5 text-xs font-medium text-red-700 hover:bg-red-50 disabled:opacity-60"
             >
-              Refuser
+              Rechazar
             </button>
           </div>
         )}
@@ -81,7 +81,7 @@ export default function SellerOrderRow({ order }) {
               onClick={() => updateStatus("COMPLETED")}
               className="rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-dark disabled:opacity-60"
             >
-              Marquer terminé
+              Marcar como completado
             </button>
           </div>
         )}

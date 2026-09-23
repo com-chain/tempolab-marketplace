@@ -24,7 +24,7 @@ export default function AddToCartButton({ productId, className }) {
         "rounded-md bg-brand px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-dark"
       }
     >
-      {added ? "Ajouté ✓" : "Ajouter au panier"}
+      {added ? "Añadido ✓" : "Añadir al carrito"}
     </button>
   );
 }

@@ -1,16 +1,15 @@
 export default function ContactPage() {
   return (
     <div className="mx-auto w-full max-w-2xl flex-1 px-4 py-10 sm:px-6">
-      <h1 className="text-2xl font-bold text-gray-900">Contact</h1>
+      <h1 className="text-2xl font-bold text-gray-900">Contacto</h1>
 
       <p className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
-        Attention ! Ce n&apos;est pas ici que l&apos;on répond aux annonces
-        présentes sur notre site, mais sur la page de l&apos;annonce
-        elle-même.
+        ¡Atención! Aquí no se responde a los anuncios publicados en nuestro
+        sitio, sino en la propia página del anuncio.
       </p>
 
       <form
-        action="mailto:kultura@kultura.ch"
+        action="mailto:contacto@tempolab.ch"
         method="post"
         encType="text/plain"
         className="mt-6 flex flex-col gap-4"
@@ -20,7 +19,7 @@ export default function ContactPage() {
             htmlFor="name"
             className="block text-sm font-medium text-gray-700"
           >
-            Votre nom :
+            Tu nombre:
           </label>
           <input
             id="name"
@@ -35,7 +34,7 @@ export default function ContactPage() {
             htmlFor="email"
             className="block text-sm font-medium text-gray-700"
           >
-            Votre adresse e-mail (obligatoire) :
+            Tu correo electrónico (obligatorio):
           </label>
           <input
             id="email"
@@ -51,14 +50,14 @@ export default function ContactPage() {
             htmlFor="reason"
             className="block text-sm font-medium text-gray-700"
           >
-            La raison pour laquelle vous souhaitez nous contacter :
+            El motivo por el que quieres contactarnos:
           </label>
           <select
             id="reason"
             name="reason"
             className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand focus:outline-none"
           >
-            <option>J&apos;ai une question ou une remarque.</option>
+            <option>Tengo una pregunta o un comentario.</option>
           </select>
         </div>
 
@@ -67,7 +66,7 @@ export default function ContactPage() {
             htmlFor="subject"
             className="block text-sm font-medium text-gray-700"
           >
-            Objet :
+            Asunto:
           </label>
           <input
             id="subject"
@@ -82,7 +81,7 @@ export default function ContactPage() {
             htmlFor="message"
             className="block text-sm font-medium text-gray-700"
           >
-            Votre message (facultatif) :
+            Tu mensaje (opcional):
           </label>
           <textarea
             id="message"
@@ -96,14 +95,13 @@ export default function ContactPage() {
           type="submit"
           className="w-fit rounded-md bg-brand px-5 py-2 text-sm font-medium text-white hover:bg-brand-dark"
         >
-          Envoyer
+          Enviar
         </button>
       </form>
 
       <div className="mt-10 border-t border-gray-200 pt-6 text-sm text-gray-600">
-        <p>15 Rue des Savoises, CH-1205 Genève</p>
-        <p>+41 78 336 86 95</p>
-        <p>kultura@kultura.ch</p>
+        <p>Ginebra, Suiza</p>
+        <p>contacto@tempolab.ch</p>
       </div>
     </div>
   );

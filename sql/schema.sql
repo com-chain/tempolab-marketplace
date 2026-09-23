@@ -48,7 +48,7 @@ CREATE TABLE "Product" (
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "price" DECIMAL(10,2) NOT NULL,
-    "currency" TEXT NOT NULL DEFAULT 'KKN/CHF',
+    "currency" TEXT NOT NULL DEFAULT 'TEMPO',
     "category" TEXT NOT NULL,
     "location" TEXT NOT NULL,
     "type" "ProductType" NOT NULL DEFAULT 'PHYSICAL',

@@ -5,7 +5,7 @@ import { requestResetSchema } from "@/lib/validation";
 import { sendPasswordResetEmail } from "@/lib/email";
 
 const GENERIC_MESSAGE =
-  "Si un compte existe avec cette adresse e-mail, un lien de réinitialisation vient d'être envoyé.";
+  "Si existe una cuenta con este correo electrónico, se acaba de enviar un enlace de restablecimiento.";
 
 export async function POST(request) {
   const body = await request.json();
@@ -13,7 +13,7 @@ export async function POST(request) {
 
   if (!result.success) {
     return NextResponse.json(
-      { error: "Adresse e-mail invalide." },
+      { error: "Correo electrónico no válido." },
       { status: 400 }
     );
   }
@@ -21,14 +21,14 @@ export async function POST(request) {
   const { email } = result.data;
   const member = await prisma.member.findUnique({ where: { email } });
 
-  // Toujours la même réponse, que le compte existe ou non, pour ne pas
-  // révéler si une adresse e-mail est enregistrée chez nous.
+  // Siempre la misma respuesta, exista o no la cuenta, para no revelar
+  // si tenemos registrada una dirección de correo electrónico.
   if (!member) {
     return NextResponse.json({ message: GENERIC_MESSAGE });
   }
 
   const token = crypto.randomBytes(32).toString("hex");
-  const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 heure
+  const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hora
 
   await prisma.passwordResetToken.create({
     data: { token, memberId: member.id, expiresAt },

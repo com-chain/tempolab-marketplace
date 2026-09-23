@@ -74,7 +74,7 @@ model Product {
   title             String
   description       String
   price             Decimal     @db.Decimal(10, 2)
-  currency          String      @default("KKN/CHF")
+  currency          String      @default("TEMPO")
   category          String
   location          String
   type              ProductType @default(PHYSICAL)

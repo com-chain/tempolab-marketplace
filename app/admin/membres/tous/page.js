@@ -25,13 +25,13 @@ export default async function AdminAllMembersPage() {
         href="/admin/membres"
         className="text-sm text-gray-500 hover:underline"
       >
-        &larr; Inscriptions en attente
+        &larr; Inscripciones pendientes
       </Link>
       <h1 className="mt-2 text-2xl font-bold text-gray-900">
-        Tous les membres
+        Todos los miembros
       </h1>
       <p className="mt-1 text-sm text-gray-500">
-        Toutes les personnes et associations inscrites sur le site.
+        Todas las personas y organizaciones inscritas en el sitio.
       </p>
 
       <AdminAllMembersTable members={members} />

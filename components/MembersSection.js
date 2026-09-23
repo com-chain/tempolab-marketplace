@@ -11,10 +11,10 @@ export default function MembersSection({ members }) {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-xl font-bold text-gray-900">
-            Associations membres
+            Organizaciones locales
           </h2>
           <p className="mt-1 max-w-md text-sm text-gray-500">
-            Kultura réunit {members.length} associations membres à Genève.
+            Tempolab reúne a {members.length} organizaciones en Ginebra.
           </p>
         </div>
 
@@ -36,9 +36,9 @@ export default function MembersSection({ members }) {
         <div className="mt-8 flex justify-center">
           <Link
             href="/associations-membres"
-            className="rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-dark"
+            className="rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white hover:bg-brand-dark"
           >
-            Voir les {members.length} associations membres
+            Ver las {members.length} organizaciones
           </Link>
         </div>
       </div>
